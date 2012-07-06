@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+    
+    <TableLayout 
+        android:id="@+id/btntable"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        >      
+        <TableRow 
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+            >
+            <Button
+                android:id="@+id/btnlogin"
+                android:layout_width="fill_parent"
+         		android:layout_height="wrap_content"
+                android:text="@string/login"
+                android:layout_weight="1"
+                />
+            <Button
+                android:id="@+id/btndelete"
+                android:layout_width="fill_parent"
+         		android:layout_height="wrap_content" 
+                android:text="@string/delete"
+                android:enabled="false" 
+                android:layout_weight="1"
+                />
+            <Button
+                android:id="@+id/btnupload"
+                android:layout_width="fill_parent"
+         		android:layout_height="wrap_content"
+                android:text="@string/upload"
+                android:enabled="false"
+                android:layout_weight="1"                 
+                />
+        </TableRow>
+
+    </TableLayout>
+    
+    
+    <ScrollView 
+       android:layout_width="fill_parent"
+	   android:layout_height="wrap_content"
+
+	   android:scrollbars="vertical"
+        >
+	    <TableLayout 
+	        android:id="@+id/content"
+	        android:layout_width="fill_parent"
+	        android:layout_height="wrap_content"
+	        android:scrollbars="vertical"
+	        >	        
+	       <TableRow >
+	           <TextView
+	               android:id="@+id/messagecenter"
+	               android:layout_width="wrap_content"
+	               android:layout_height="wrap_content"
+	               android:layout_weight="5"
+	               android:text="@string/content"
+	               android:layout_marginLeft="10dp"
+	               android:singleLine="false"
+	               android:textAppearance="?android:attr/textAppearanceMedium"
+	               />
+	           <Button
+	               android:layout_width="wrap_content"
+	               android:layout_height="wrap_content"
+	               android:layout_weight="1"
+	               android:text="@string/edit"
+	               />
+	       </TableRow> 
+	        
+	    </TableLayout>
+    
+    </ScrollView>	
+	
+</LinearLayout>
