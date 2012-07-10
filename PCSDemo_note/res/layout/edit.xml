@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"       
+        >
+        
+       <Button
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/btneditback"
+            android:text="@string/editback"
+            android:layout_marginRight="20dp"            
+            android:layout_weight="1"
+       /> 
+            
+        <Button
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/btneditsave"
+            android:text="@string/save"
+            android:layout_marginLeft="20dp"
+            android:layout_weight="1"          
+       />
+        
+    </LinearLayout>
+    
+    <RelativeLayout 
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        >
+        
+        <TextView 
+            android:id="@+id/edittext"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/filetitle"
+            android:textSize="18dp"
+            android:gravity="center"
+            />
+        <EditText
+            android:id="@+id/edit_title"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/edittext"
+            android:layout_alignTop="@+id/edittext"
+            />
+        
+        <EditText
+            android:id="@+id/edit_content"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_below="@+id/edit_title"
+            android:layout_alignLeft="@+id/edittext"
+            android:singleLine="false"
+            android:gravity="top"
+            android:scrollbars="vertical"
+            />
+        
+    </RelativeLayout>
+       
+
+</LinearLayout>

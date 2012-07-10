@@ -43,12 +43,15 @@ public class BaiduPCSListStream extends BaiduPCSActionBase{
 	private final static String Value_Method = "list";
 	
 	// type of list
+	@SuppressWarnings("unused")
 	private final static String Value_Type = "type";
 	
 	// start of the list
+	@SuppressWarnings("unused")
 	private final static String Value_Start = "start";
 	
 	// limit of the list
+	@SuppressWarnings("unused")
 	private final static String Value_Limit = "limit";
 	
 	
