@@ -26,6 +26,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
+/*
+ * Author: ganxun(ganxun@baidu.com)
+ * Time:   2012.7.10
+ * 
+ */
+
 @SuppressWarnings("unused")
 public class ContentActivity extends ListActivity {
     /** Called when the activity is first created. */
@@ -94,12 +100,12 @@ public class ContentActivity extends ListActivity {
     		Thread workThread = new Thread(new Runnable(){
 				public void run() {
 					
-					try {
-						Thread.sleep(500);
-					} catch (InterruptedException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
+//					try {
+//						Thread.sleep(500);
+//					} catch (InterruptedException e) {
+//						// TODO Auto-generated catch block
+//						e.printStackTrace();
+//					}
 
 		    		BaiduPCSAPI api = new BaiduPCSAPI();
 		    		api.setAccessToken(access_token );
@@ -186,7 +192,6 @@ public class ContentActivity extends ListActivity {
 				
 				delete();
 				
-				refresh();
 			}
 		});
     	
@@ -281,6 +286,8 @@ public class ContentActivity extends ListActivity {
 		    				if(0 == ret.error_code){
 		    					
 		    					Toast.makeText(getApplicationContext(), "É¾³ý³É¹¦£¡", Toast.LENGTH_SHORT).show();
+		    					refresh();
+		    					
 		    				}else{
 		    					Toast.makeText(getApplicationContext(), "É¾³ýÊ§°Ü£¡"+ret.message, Toast.LENGTH_SHORT).show();
 		    				}

@@ -27,6 +27,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+/*
+ * Author: ganxun(ganxun@baidu.com)
+ * Time:   2012.7.10
+ * 
+ */
 
 @SuppressWarnings("unused")
 public class EditActivity extends Activity {
@@ -146,8 +151,6 @@ public class EditActivity extends Activity {
         					// TODO Auto-generated method stub
         						
         	        		  delete();
-        					
-        					  upload();
 
         				  }
         			  });
@@ -184,12 +187,12 @@ public class EditActivity extends Activity {
     		Thread workThread = new Thread(new Runnable(){
 				public void run() {
 					
-		    		try {
-						Thread.sleep(1000);
-					} catch (InterruptedException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
+//		    		try {
+//						Thread.sleep(1000);
+//					} catch (InterruptedException e) {
+//						// TODO Auto-generated catch block
+//						e.printStackTrace();
+//					}
 		    		
 		    		BaiduPCSAPI api = new BaiduPCSAPI();
 		    		api.setAccessToken(access_token);
@@ -207,7 +210,7 @@ public class EditActivity extends Activity {
 		    			public void run(){
 		    				if(response.error_code == 0){
 		    					
-		    					Toast.makeText(getApplicationContext(),"上传成功", Toast.LENGTH_SHORT).show(); 
+//		    					Toast.makeText(getApplicationContext(),"上传成功", Toast.LENGTH_SHORT).show(); 
 		    					back();
 		    					
 		    				}else{
@@ -311,7 +314,8 @@ public class EditActivity extends Activity {
 		    			public void run(){
 		    				if(0 == ret.error_code){
 		    					
-		    					Toast.makeText(getApplicationContext(), "删除成功！", Toast.LENGTH_SHORT).show();
+//		    					Toast.makeText(getApplicationContext(), "删除成功！", Toast.LENGTH_SHORT).show();
+	        					upload();
 		    				}else{
 		    					Toast.makeText(getApplicationContext(), "删除失败！"+ret.message, Toast.LENGTH_SHORT).show();
 		    				}

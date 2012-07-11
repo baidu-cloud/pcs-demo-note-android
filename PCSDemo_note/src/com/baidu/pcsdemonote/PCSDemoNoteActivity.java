@@ -1,6 +1,7 @@
 package com.baidu.pcsdemonote;
 
 import com.baidu.oauth2.BaiduOAuth;
+
 import com.baidu.oauth2.BaiduOAuthViaDialog;
 
 import android.app.Activity;
@@ -10,6 +11,13 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
+
+/*
+ * Author: ganxun(ganxun@baidu.com)
+ * Time:   2012.7.10
+ * 
+ */
+
 
 public class PCSDemoNoteActivity extends Activity {
     /** Called when the activity is first created. */

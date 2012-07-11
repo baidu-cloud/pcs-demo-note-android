@@ -30,6 +30,11 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+/*
+ * Author: ganxun(ganxun@baidu.com)
+ * Time:   2012.7.10
+ * 
+ */
 
 @SuppressWarnings("unused")
 public class CreateActivity extends Activity {
