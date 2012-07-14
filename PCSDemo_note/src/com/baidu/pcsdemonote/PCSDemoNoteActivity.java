@@ -8,6 +8,8 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -20,7 +22,8 @@ import android.widget.Toast;
 
 
 public class PCSDemoNoteActivity extends Activity {
-    /** Called when the activity is first created. */
+
+	/** Called when the activity is first created. */
 	
 	private Button login = null;
 	
@@ -32,9 +35,11 @@ public class PCSDemoNoteActivity extends Activity {
      */
     private final static String mbApiKey = "L6g70tBRRIXLsY0Z3HwKqlRE"; //your app_key";
 	
+    
 	
     @Override
     public void onCreate(Bundle savedInstanceState) {
+    	    	
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
         
@@ -48,7 +53,7 @@ public class PCSDemoNoteActivity extends Activity {
             }
         });
     }
-        
+    
     //
     // login
     //
@@ -99,5 +104,6 @@ public class PCSDemoNoteActivity extends Activity {
     		e.printStackTrace();
     	}
     }
+    
 }
 

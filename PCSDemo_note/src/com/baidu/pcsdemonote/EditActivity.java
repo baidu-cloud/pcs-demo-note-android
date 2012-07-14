@@ -22,9 +22,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 /*
@@ -37,7 +41,7 @@ import android.widget.Toast;
 public class EditActivity extends Activity {
     /** Called when the activity is first created. */
 	
-	private EditText title = null;
+	private TextView title = null;
 	
 	private EditText content = null;
 	
@@ -47,8 +51,8 @@ public class EditActivity extends Activity {
 	
 	private String fileTitle = null;
 	
-	private Button editBack = null;
-	private Button save = null;
+	private ImageButton editBack = null;
+	private ImageButton save = null;
 	
 	private String output_content = null;
 	
@@ -72,11 +76,11 @@ public class EditActivity extends Activity {
         access_token = intent.getStringExtra("access_token");
         fileTitle = intent.getStringExtra("fileTitle");
         
-        title = (EditText)findViewById(R.id.edit_title);
+        title = (TextView)findViewById(R.id.edit_title);
         content = (EditText)findViewById(R.id.edit_content);
         
-        editBack = (Button)findViewById(R.id.btneditback);
-        save = (Button)findViewById(R.id.btneditsave);
+        editBack = (ImageButton)findViewById(R.id.btneditback);
+        save = (ImageButton)findViewById(R.id.btneditsave);
         
         
         uiThreadHandler = new Handler(); 
@@ -186,14 +190,7 @@ public class EditActivity extends Activity {
 
     		Thread workThread = new Thread(new Runnable(){
 				public void run() {
-					
-//		    		try {
-//						Thread.sleep(1000);
-//					} catch (InterruptedException e) {
-//						// TODO Auto-generated catch block
-//						e.printStackTrace();
-//					}
-		    		
+							    		
 		    		BaiduPCSAPI api = new BaiduPCSAPI();
 		    		api.setAccessToken(access_token);
 		    	
@@ -342,4 +339,34 @@ public class EditActivity extends Activity {
     		
     	EditActivity.this.startActivity(content_intent);   		  	
     }
+    
+    @Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		// TODO Auto-generated method stub
+		super.onCreateOptionsMenu(menu);
+	    menu.add(0, ITEM0, 0,"退出");
+	    menu.add(0, ITEM1, 0, "关于我们");
+	    
+	    return true;
+	}  
+    
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		// TODO Auto-generated method stub
+		super.onOptionsItemSelected(item);
+		
+		 switch (item.getItemId()) {
+		     case ITEM0:
+		    	 this.finish();
+		         break;
+		     case ITEM1:
+                 
+		         break;
+		 }
+		 
+		return true;
+	}
+    
+    public static final int ITEM0=Menu.FIRST;//系统值
+    public static final int ITEM1=Menu.FIRST+1;
 }

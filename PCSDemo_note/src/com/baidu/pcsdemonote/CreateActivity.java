@@ -24,9 +24,12 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -40,7 +43,7 @@ import android.widget.Toast;
 public class CreateActivity extends Activity {
     /** Called when the activity is first created. */
 	
-	private EditText title = null;
+	private TextView  title = null;
 	
 	private EditText content = null;
 	
@@ -50,8 +53,8 @@ public class CreateActivity extends Activity {
 	
 	private String fileTitle = null;
 	
-	private Button editBack = null;
-	private Button save = null;
+	private ImageButton editBack = null;
+	private ImageButton save = null;
 	
 	private String output_content = null;
 	
@@ -73,11 +76,11 @@ public class CreateActivity extends Activity {
         access_token = intent.getStringExtra("access_token");
         fileTitle = intent.getStringExtra("fileTitle");
         
-        title = (EditText)findViewById(R.id.titleedit);
+        title = (TextView)findViewById(R.id.titleedit);
         content = (EditText)findViewById(R.id.contentedit);
         
-        editBack = (Button)findViewById(R.id.btnback);
-        save = (Button)findViewById(R.id.btnsave);
+        editBack = (ImageButton)findViewById(R.id.btnback);
+        save = (ImageButton)findViewById(R.id.btnsave);
               
         uiThreadHandler = new Handler(); 
         
@@ -231,4 +234,34 @@ public class CreateActivity extends Activity {
         		
         CreateActivity.this.startActivity(content_intent);   		  	         	
     }
+    
+    @Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		// TODO Auto-generated method stub
+		super.onCreateOptionsMenu(menu);
+	    menu.add(0, ITEM0, 0,"退出");
+	    menu.add(0, ITEM1, 0, "关于我们");
+	    
+	    return true;
+	}  
+    
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		// TODO Auto-generated method stub
+		super.onOptionsItemSelected(item);
+		
+		 switch (item.getItemId()) {
+		     case ITEM0:
+		    	 this.finish();
+		         break;
+		     case ITEM1:
+                 
+		         break;
+		 }
+		 
+		return true;
+	}
+    
+    public static final int ITEM0=Menu.FIRST;//系统值
+    public static final int ITEM1=Menu.FIRST+1;
 }

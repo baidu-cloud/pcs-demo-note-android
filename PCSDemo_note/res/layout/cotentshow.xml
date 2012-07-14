@@ -1,49 +1,88 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
     android:orientation="vertical" 
 	>
 	
-    <LinearLayout
+    <RelativeLayout
+        android:id="@+id/content" 
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content" 
-        android:orientation="horizontal"      
+        android:layout_height="48dp"
+        android:layout_alignParentTop="true"
+        android:background="#333000"
         >
-        
-       <Button
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/btncreate"
-            android:text="@string/create"
-            android:layout_marginRight="20dp"            
-            android:layout_weight="1"
-
-       />
-        
-        <Button
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/btnrefresh"
-            android:text="@string/contentrefresh"
-            android:layout_marginLeft="20dp"
-            android:layout_weight="1"
-           
-       />
-        
-    </LinearLayout>
-    
-    <TextView
-         android:id="@+id/text" 
-         android:layout_width="fill_parent"     
+     <ImageView 
+         android:id="@+id/contenticon"
+         android:layout_width="32dp"
+         android:layout_height="32dp"
+         android:layout_alignParentLeft="true"
+         android:src="@drawable/icon"
+         android:layout_centerVertical="true"
+         />
+     <TextView 
+         android:id="@+id/contenttitle"
+         android:layout_width="fill_parent"
          android:layout_height="wrap_content"
+         android:text="@string/contenttitle"
+         android:textSize="7pt"
+         android:layout_toRightOf="@+id/contenticon"
+         android:layout_centerVertical="true"
+         />
+        
+    </RelativeLayout>
+	
+    <RelativeLayout 
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:background="#CC9909"
+        android:layout_marginBottom="64dp"
+        android:layout_below="@+id/content"
+        >
+    
+    <ListView 
+        android:id="@id/android:list"         
+        android:layout_width="fill_parent"     
+        android:layout_height="wrap_content"   
+        android:drawSelectorOnTop="false"     
+        android:scrollbars="vertical"
         />
     
-    <ListView android:id="@id/android:list"         
-                  android:layout_width="fill_parent"     
-                  android:layout_height="wrap_content"   
-                  android:drawSelectorOnTop="false"     
-                  android:scrollbars="vertical"
-                  />
+    </RelativeLayout>
+    
+    
+   	<RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" 
+        android:orientation="horizontal"
+        android:layout_alignParentBottom="true"
+        android:background="#333000"   
+        >
+        
+       <ImageButton
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:id="@+id/btncreate"
+            android:layout_marginRight="30dp"            
+            android:src="@drawable/ic_dialer_fork_add_call"
+            android:contentDescription="@string/create"
+            android:layout_alignParentLeft="true"
+            android:background="#333000" 
+       />
+        
+        <ImageButton
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:id="@+id/btnrefresh"
+            android:contentDescription="@string/contentrefresh"
+            android:layout_marginLeft="20dp"
+           	android:src="@drawable/ic_settings_sync"
+           	android:layout_alignParentRight="true"
+           	android:layout_alignTop="@+id/btncreate"
+           	android:background="#333000" 
+       />
+        
+    </RelativeLayout>
 
-</LinearLayout>
+</RelativeLayout>
