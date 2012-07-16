@@ -62,7 +62,7 @@ public class CreateActivity extends Activity {
 	
 	private int save_Flag = 0;
 	
-	private final static String mbRootPath = "/apps/pcstest_oauth/";
+	private final static String mbRootPath = "/apps/ÔÆ¶Ë¼ÇÊÂ±¾/";
 	
 	
 	

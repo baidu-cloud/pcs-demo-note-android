@@ -35,9 +35,9 @@ public class PCSDemoNoteActivity extends Activity {
     /*
      * mbApiKey should be your app_key, please instead of "your app_key"
      */
-    private final static String mbApiKey = "L6g70tBRRIXLsY0Z3HwKqlRE"; //your app_key";
+//    private final static String mbApiKey = "L6g70tBRRIXLsY0Z3HwKqlRE"; //your app_key";
 	
-    	
+      private final static String mbApiKey = "A364CFOoZtNnrsRlusRbHK5r"; //your app_key";
     @Override
     public void onCreate(Bundle savedInstanceState) {
     	    	
@@ -83,9 +83,7 @@ public class PCSDemoNoteActivity extends Activity {
     	try {
     		mbOauth.startDialogAuth(this, new String[]{"basic", "netdisk"}, new BaiduOAuthViaDialog.DialogListener(){
 
-    			public void onComplete(Bundle values) {
-    				
-//    				mbMessageCenter.setText("Access Token: " + values.getString("access_token"));
+    			public void onComplete(Bundle values) {   				
     				Log.i("YYY", values.getString("access_token"));
     				
     				Intent intent = new Intent();
@@ -94,28 +92,20 @@ public class PCSDemoNoteActivity extends Activity {
     				
     				intent.setClass(getApplicationContext(), ContentActivity.class);
     				
-    				PCSDemoNoteActivity.this.startActivity(intent);
-    				
+    				PCSDemoNoteActivity.this.startActivity(intent);    				
     			}
 
     			// TODO: the error code need be redefined
     			@SuppressWarnings("unused")
-				public void onError(int error) {
-//    				mbMessageCenter.setText("Login Error: " + error);
-    				
+				public void onError(int error) {   				
     				Toast.makeText(getApplicationContext(), R.string.fail, Toast.LENGTH_SHORT).show();
     			}
 
-    			public void onCancel() {
-//    				mbMessageCenter.setText("Cancel login");
-    				
+    			public void onCancel() {   				
     				Toast.makeText(getApplicationContext(), R.string.back, Toast.LENGTH_SHORT).show();
-    				//commandTest.this.addErr("access token error :\n" + "User  cancel the request");
     			}
 
     			public void onException(String arg0) {
-//    				mbMessageCenter.setText("Login Exception: " + arg0);
-    				
     				Toast.makeText(getApplicationContext(), arg0, Toast.LENGTH_SHORT).show();
     			}
     		});

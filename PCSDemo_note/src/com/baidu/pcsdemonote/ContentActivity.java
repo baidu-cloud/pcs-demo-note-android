@@ -1,6 +1,10 @@
 package com.baidu.pcsdemonote;
 
+import java.sql.ResultSet;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -39,7 +43,7 @@ import android.widget.Toast;
 public class ContentActivity extends ListActivity {
     /** Called when the activity is first created. */
 	
-	private final static String mbRootPath = "/apps/pcstest_oauth";
+	private final static String mbRootPath = "/apps/云端记事本";
 	
 	private Handler uiThreadHandler = null;
 	
@@ -74,8 +78,7 @@ public class ContentActivity extends ListActivity {
         uiThreadHandler = new Handler(); 
         
         list();
-        
-        
+                
         create.setOnClickListener(new Button.OnClickListener(){
         	
         	public void onClick(View v){
@@ -100,14 +103,6 @@ public class ContentActivity extends ListActivity {
         	        	
     		Thread workThread = new Thread(new Runnable(){
 				public void run() {
-					
-//					try {
-//						Thread.sleep(500);
-//					} catch (InterruptedException e) {
-//						// TODO Auto-generated catch block
-//						e.printStackTrace();
-//					}
-
 		    		BaiduPCSAPI api = new BaiduPCSAPI();
 		    		api.setAccessToken(access_token );
 		    		String path = mbRootPath;
@@ -117,33 +112,43 @@ public class ContentActivity extends ListActivity {
 		    		uiThreadHandler.post(new Runnable(){
 		    			public void run(){
 		    				
+		    				ArrayList<HashMap<String, String>> list =new ArrayList<HashMap<String,String>>();   
+		    	            //HashMpa为键值对类型。第一个参数为建，第二个参数为值   
 		    				if("[]" != ret.list.toString()){
-		    					
-			    	            ArrayList<HashMap<String, String>> list =new ArrayList<HashMap<String,String>>();   
-			    	            //HashMpa为键值对类型。第一个参数为建，第二个参数为值   
-			    	            
+		    					   			    	            
 			    	            for(Iterator<PCSFileInfoResponse> i = ret.list.iterator(); i.hasNext();){
 			    	            	
 			    	            	HashMap<String, String> map =new HashMap<String, String>();
 			    	            	
-			    	            	String path = i.next().path;
+			    	            	PCSFileInfoResponse info = i.next();
+			    	            				    	            	
+			    	         	    String path = info.path;			    	         	    
+			    	         	 			    	         	    
+			    	         	    Date date = new Date(info.mTime*1000);
+			    	         	    
+			    	         	    SimpleDateFormat formatter = new SimpleDateFormat("MM-dd HH:mm");
+			    	         	    String dateString = formatter.format(date);
+			    	         	    
+//			    	         	    String time = date.getYear()+"/"+date.getMonth()+"/"+date.getDate()+"/"+date.getHours()+":"+date.getMinutes();
+			    	         	    
+			  			 			    	          			    	            	
+			    	            	String fileName = path.substring(mbRootPath.length()+1,path.lastIndexOf("."));		    	            	
+			    	            	map.put("file_name", fileName);			    	            	
+			    	            	map.put("time", dateString);
 			    	            	
-			    	            	String fileName = path.substring(mbRootPath.length()+1,path.lastIndexOf("."));
-		    	            	
-			    	            	map.put("file_name", fileName);
-			    	            	
-			    	            	fileNameList.add(fileName);
-							    	   
-				    	            list.add(map);  
-			    	            }
-			    	               
-			    	            //生成一个SimpleAdapter类型的变量来填充数据   
-			    	            SimpleAdapter listAdapter =new SimpleAdapter(ContentActivity.this, list, R.layout.content, new String[]{"file_name"}, new int[]{R.id.file_name});   
-			    	            //设置显示ListView   
-			    	            setListAdapter(listAdapter); 
-			    	            
-			    	            Toast.makeText(getApplicationContext(), R.string.refresh, Toast.LENGTH_SHORT).show();
-		    				}		    						    				        	  	  				    				
+			    	            	list.add(map); 	            	
+			    	            	fileNameList.add(fileName);							    				    	             
+			    	            }			    	               
+			    	        }else{
+		    					list.clear();
+		    					Toast.makeText(getApplicationContext(), "您的文件夹为空！", Toast.LENGTH_SHORT).show();		    					
+		    				}    
+		    				//生成一个SimpleAdapter类型的变量来填充数据   
+			    	         SimpleAdapter listAdapter =new SimpleAdapter(ContentActivity.this, list, R.layout.content, new String[]{"file_name","time"}, new int[]{R.id.file_name,R.id.time});   
+			    	        //设置显示ListView   
+			    	         setListAdapter(listAdapter); 			    	            
+			    	         Toast.makeText(getApplicationContext(), R.string.refresh, Toast.LENGTH_SHORT).show();
+
 		    			}
 		    		});	
 		    		
@@ -163,7 +168,7 @@ public class ContentActivity extends ListActivity {
     	
     	name = l.getAdapter().getItem(position).toString();
     	
-    	name = name.substring(name.indexOf("=")+1, name.lastIndexOf("}"));
+    	name = name.substring(name.indexOf("=")+1, name.lastIndexOf(","));
     	 
 		
     	AlertDialog.Builder onListItemClickAlert = new AlertDialog.Builder(ContentActivity.this);
@@ -302,8 +307,6 @@ public class ContentActivity extends ListActivity {
 		    				}else{
 		    					Toast.makeText(getApplicationContext(), "删除失败！"+ret.message, Toast.LENGTH_SHORT).show();
 		    				}
-		    				
-//		    				mbMessageCenter.setText("Delete files:  " + (0 == ret.error_code ? "success" : "failed  " + ret.message));
 		    			}
 		    		});	
 				}

@@ -31,28 +31,30 @@ public final class R {
         public static final int yi_textfield_default_baidu_dark=0x7f020011;
     }
     public static final class id {
-        public static final int btnback=0x7f050009;
-        public static final int btncreate=0x7f050004;
-        public static final int btneditback=0x7f05000f;
-        public static final int btneditsave=0x7f050010;
-        public static final int btnlogin=0x7f050015;
-        public static final int btnrefresh=0x7f050005;
-        public static final int btnsave=0x7f05000a;
-        public static final int content=0x7f050001;
-        public static final int contentedit=0x7f050008;
-        public static final int contenticon=0x7f050002;
-        public static final int contenttitle=0x7f050003;
-        public static final int creat=0x7f050006;
-        public static final int edit=0x7f05000b;
-        public static final int edit_content=0x7f05000d;
-        public static final int edit_title=0x7f05000c;
-        public static final int edittext=0x7f05000e;
-        public static final int file_name=0x7f050000;
-        public static final int login=0x7f050011;
-        public static final int loginicon=0x7f050012;
-        public static final int logintitle=0x7f050013;
-        public static final int logoicon=0x7f050014;
-        public static final int titleedit=0x7f050007;
+        public static final int btnback=0x7f05000b;
+        public static final int btncreate=0x7f050006;
+        public static final int btneditback=0x7f050011;
+        public static final int btneditsave=0x7f050012;
+        public static final int btnlogin=0x7f050017;
+        public static final int btnrefresh=0x7f050007;
+        public static final int btnsave=0x7f05000c;
+        public static final int content=0x7f050003;
+        public static final int contentedit=0x7f05000a;
+        public static final int contenticon=0x7f050004;
+        public static final int contenttitle=0x7f050005;
+        public static final int creat=0x7f050008;
+        public static final int edit=0x7f05000d;
+        public static final int edit_content=0x7f05000f;
+        public static final int edit_title=0x7f05000e;
+        public static final int edittext=0x7f050010;
+        public static final int file_name=0x7f050001;
+        public static final int login=0x7f050013;
+        public static final int loginicon=0x7f050014;
+        public static final int logintitle=0x7f050015;
+        public static final int logoicon=0x7f050016;
+        public static final int tag=0x7f050000;
+        public static final int time=0x7f050002;
+        public static final int titleedit=0x7f050009;
     }
     public static final class layout {
         public static final int content=0x7f030000;

@@ -1,18 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>  
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"  
-              android:orientation="horizontal"    
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" 
+    		  android:orientation="horizontal"
               android:layout_width="fill_parent"    
               android:layout_height="fill_parent">  
-                 
+   <TextView android:id="@+id/tag"    
+              android:layout_width="10dp"    
+              android:layout_height="50dp"
+              android:textColor="#000000"    
+              android:singleLine="true"    
+              android:textSize="10pt"  
+              android:background="#ff8e2b"             
+               />            
     <TextView android:id="@+id/file_name"    
+              android:layout_width="180dp"    
+              android:layout_height="50dp"
+              android:textColor="#000000"    
+              android:singleLine="true"    
+              android:textSize="10pt"  
+              android:background="#faf3c5"             
+               />
+    <TextView android:id="@+id/time"    
               android:layout_width="fill_parent"    
               android:layout_height="50dp"
               android:textColor="#000000"    
               android:singleLine="true"    
               android:textSize="10pt"  
-              android:paddingTop="10dip"  
-              android:paddingLeft="16dip" 
-              android:background="#faf3c5" 
-               />  
-                 
-</LinearLayout>  
+              android:background="#faf3c5"
+			  android:layout_gravity="right"
+               />
+                    
+</LinearLayout >  

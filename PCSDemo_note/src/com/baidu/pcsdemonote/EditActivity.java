@@ -61,7 +61,7 @@ public class EditActivity extends Activity {
 	
 	private String target = null;
 	
-	private final static String mbRootPath = "/apps/pcstest_oauth/";
+	private final static String mbRootPath = "/apps/云端记事本/";
 	
 	private int save_Flag = 0;
 	
@@ -160,6 +160,11 @@ public class EditActivity extends Activity {
 		    				if(response.error_code == 0){
 		    					
 //		    					Toast.makeText(getApplicationContext(),"上传成功", Toast.LENGTH_SHORT).show(); 
+		    					
+		    					File file = new File(sourceFile);
+		    					
+		    					file.delete();
+		    					
 		    					back();
 		    					
 		    				}else{
