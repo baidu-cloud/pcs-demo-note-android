@@ -37,6 +37,17 @@
         android:background="#FFFFFF"
         android:layout_below="@+id/login"
         >
+     
+    <ImageView 
+         android:id="@+id/logoicon"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_marginLeft="10dp"
+         android:layout_marginTop="60dp"
+         android:src="@drawable/baidu_logo"
+         android:layout_centerHorizontal="true"
+         />
+    
 	<Button
 	    android:id="@+id/btnlogin"
 	    android:layout_width="180dp"
@@ -47,7 +58,7 @@
 	    android:layout_alignParentBottom="true"
 	    android:layout_centerHorizontal="true"
 	    android:background="@drawable/yi_btn_default_normal_baidu"
-	    android:layout_marginBottom="80dp"
+	    android:layout_marginBottom="90dp"
 	    />
 	
 	</RelativeLayout>

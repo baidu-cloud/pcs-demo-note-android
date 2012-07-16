@@ -6,19 +6,17 @@
     
     <RelativeLayout
         android:id="@+id/edit" 
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="48dp"
-        android:layout_alignParentTop="true"
         android:background="#333000"
         >
 
      <TextView 
          android:id="@+id/edit_title"
-         android:layout_width="fill_parent"
+         android:layout_width="wrap_content"
          android:layout_height="wrap_content"
          android:textSize="10pt"
-		 android:layout_centerHorizontal="true"
-		 android:layout_centerVertical="true"
+		 android:layout_centerInParent="true"
          />
         
     </RelativeLayout>
@@ -27,7 +25,7 @@
 	<RelativeLayout 
 	    android:layout_width="fill_parent"
 	    android:layout_height="match_parent"
-	    android:background="#FFFFFF"
+	    android:background="#FFFFCC"
 	    android:layout_marginBottom="64dp"
 	    android:layout_below="@+id/edit"
 	    >
@@ -35,12 +33,12 @@
 	 <EditText
             android:id="@+id/edit_content"
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_below="@+id/edit_title"
             android:layout_alignLeft="@+id/edittext"
             android:singleLine="false"
             android:scrollbars="vertical"
-            android:lines="20"
+			android:background="#faf3c5" 
             android:gravity="top"
             />
 	    	    

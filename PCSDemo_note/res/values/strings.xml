@@ -2,7 +2,7 @@
 <resources>
 
     <string name="hello">Hello World, PCSDemoNoteActivity!</string>
-    <string name="app_name">PCSDemoNote</string>
+    <string name="app_name">云端记事本</string>
     <string name="login">与百度连接</string>
     <string name="success">登陆成功！</string>
     <string name="fail">登录失败！</string>

@@ -53,6 +53,7 @@ public class ContentActivity extends ListActivity {
 	
 	private int flag = 0 ;
 	
+	
 	private ArrayList<String> fileNameList = new ArrayList<String>();
 
 	
@@ -230,10 +231,7 @@ public class ContentActivity extends ListActivity {
                 	flag = 1;
                 	
                 }
-            
-				
-				
-				
+            				
 				for(Iterator<String> file = fileNameList.iterator();file.hasNext();){
 					
 					if (file.next().equals(fileTitle)){
@@ -347,13 +345,14 @@ public class ContentActivity extends ListActivity {
 		return true;
 	}
 	
-    public void  isExit(){
+  public void  isExit(){
     	
         AlertDialog.Builder exitAlert = new AlertDialog.Builder(this);
         exitAlert.setTitle("提示...").setMessage("你确定要离开客户端吗？");
         exitAlert.setPositiveButton("确定", new DialogInterface.OnClickListener() {
                
                     public void onClick(DialogInterface dialog, int which) {
+                    	Exit.flag = 1;
                         Intent intent = new Intent(); 
                         intent.putExtra("flag", "exit");//添加参数，这是退出的依据
                         intent.setClass(getApplicationContext(), PCSDemoNoteActivity.class);//跳转到login界面，根据参数退出

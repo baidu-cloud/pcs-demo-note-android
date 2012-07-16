@@ -14,11 +14,10 @@
 
      <TextView 
          android:id="@+id/titleedit"
-         android:layout_width="fill_parent"
+         android:layout_width="wrap_content"
          android:layout_height="wrap_content"
          android:textSize="10pt"
-		 android:layout_centerHorizontal="true"
-		 android:layout_centerVertical="true"
+		 android:layout_centerInParent="true"
          />
         
     </RelativeLayout>
@@ -26,7 +25,7 @@
 	<RelativeLayout 
 	    android:layout_width="fill_parent"
 	    android:layout_height="match_parent"
-	    android:background="#FFFFFF"
+	    android:background="#FFFFCC"
 	    android:layout_marginBottom="64dp"
 	    android:layout_below="@+id/creat"
 	    >
@@ -34,12 +33,12 @@
 	 <EditText
             android:id="@+id/contentedit"
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_below="@+id/titleedit"
             android:singleLine="false"
             android:scrollbars="vertical"
             android:gravity="top"
-            android:lines="20"
+            android:background="#faf3c5" 
             />
 	    	    
 	</RelativeLayout>

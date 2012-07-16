@@ -106,65 +106,27 @@ public class CreateActivity extends Activity {
     }
     
     private void save() {
-    	
-    	fileTitle = title.getText().toString();
-    	
-    	File savePath;
-    	
- //   	File saveFile;
-    	
-    	if(!"".equals(fileTitle)){
-    		
-        	try{
+    	  	    		
+        try{
         			
-        	     sourceFile = this.getFilesDir()+"/"+fileTitle+".txt";
+        	 sourceFile = this.getFilesDir()+"/"+fileTitle+".txt";
         		
-        		 String saveFile = fileTitle+".txt";
+        	 String saveFile = fileTitle+".txt";
         			        			 	 
-        		 FileOutputStream outputStream= this.openFileOutput(saveFile, Context.MODE_PRIVATE);
+        	 FileOutputStream outputStream= this.openFileOutput(saveFile, Context.MODE_PRIVATE);
         		 
-        	     output_content=content.getText().toString();
+        	 output_content=content.getText().toString();
         	          	 
-        	     outputStream.write(output_content.getBytes());
+        	 outputStream.write(output_content.getBytes());
         	       	 
-        	     outputStream.close();
-        	       	 
-//        	         Toast.makeText(EditActivity.this, R.string.savesuccess, Toast.LENGTH_SHORT).show();
-        	         
-        	     AlertDialog.Builder uploadDialog = new Builder(CreateActivity.this);
-        	     uploadDialog.setMessage("本地保存成功，是否上传到网盘？");
-        	     uploadDialog.setTitle("提示");
-        	         
-        	     uploadDialog.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
-        				
-        		      public void onClick(DialogInterface dialog, int which) {
-        					// TODO Auto-generated method stub
-        					
-        					upload();
-
-        			   }
-        	      });
-        	    	
-        	     uploadDialog.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
-        				
-        			  public void onClick(DialogInterface dialog, int which) {
-        					// TODO Auto-generated method stub
-        					
-        				  }
-        		});
-        	         
-        	    uploadDialog.create().show();        	                	         
-        		       	 		    
+        	 outputStream.close();
+  					
+        	 upload();
+      	                	                 		       	 		    
         	}catch (Exception e) {   
                 //显示“文件保存失败”  
                 Toast.makeText(getApplicationContext(), R.string.error, Toast.LENGTH_SHORT).show();  
-            } 
-    	}else{
-    		
-    		Toast.makeText(getApplicationContext(), "文件名不能为空！", Toast.LENGTH_SHORT).show(); 
-
-    	}
-    		 
+            }    		 
     }
     
     private void upload(){
@@ -203,7 +165,12 @@ public class CreateActivity extends Activity {
 		    			public void run(){
 		    				if(response.error_code == 0){
 		    					
-		    					Toast.makeText(getApplicationContext(),"上传成功", Toast.LENGTH_SHORT).show(); 
+		    					Toast.makeText(getApplicationContext(),"上传成功", Toast.LENGTH_SHORT).show();
+		    					
+		    					File file = new File(sourceFile);
+		    					
+		    					file.delete();
+		    					
 		    					back();
 		    					
 		    				}else{
@@ -236,32 +203,58 @@ public class CreateActivity extends Activity {
     }
     
     @Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// TODO Auto-generated method stub
-		super.onCreateOptionsMenu(menu);
-	    menu.add(0, ITEM0, 0,"退出");
-	    menu.add(0, ITEM1, 0, "关于我们");
-	    
-	    return true;
-	}  
-    
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		// TODO Auto-generated method stub
-		super.onOptionsItemSelected(item);
-		
-		 switch (item.getItemId()) {
-		     case ITEM0:
-		    	 this.finish();
-		         break;
-		     case ITEM1:
-                 
-		         break;
-		 }
-		 
-		return true;
-	}
-    
-    public static final int ITEM0=Menu.FIRST;//系统值
-    public static final int ITEM1=Menu.FIRST+1;
+ 	public boolean onCreateOptionsMenu(Menu menu) {
+ 		// TODO Auto-generated method stub
+ 		super.onCreateOptionsMenu(menu);
+ 	    menu.add(0, ITEM0, 0,"退出");
+ 	    menu.add(0, ITEM1, 0, "关于我们");
+ 	    
+ 	    return true;
+ 	}  
+     
+ 	@Override
+ 	public boolean onOptionsItemSelected(MenuItem item) {
+ 		// TODO Auto-generated method stub
+ 		super.onOptionsItemSelected(item);
+ 		
+ 		 switch (item.getItemId()) {
+ 		     case ITEM0:
+ 		    	 isExit();
+ 		         break;
+ 		     case ITEM1:
+                  
+ 		         break;
+ 		 }
+ 		 
+ 		return true;
+ 	}
+ 	
+   public void  isExit(){
+     	
+         AlertDialog.Builder exitAlert = new AlertDialog.Builder(this);
+         exitAlert.setTitle("提示...").setMessage("你确定要离开客户端吗？");
+         exitAlert.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                
+                     public void onClick(DialogInterface dialog, int which) {
+                     	Exit.flag = 1;
+                         Intent intent = new Intent(); 
+                         intent.putExtra("flag", "exit");//添加参数，这是退出的依据
+                         intent.setClass(getApplicationContext(), PCSDemoNoteActivity.class);//跳转到login界面，根据参数退出
+                         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);  //注意本行的FLAG设置,clear所有Activity记录
+                         startActivity(intent);//注意啊，在跳转的页面中进行检测和退出
+                     }
+                 });
+         exitAlert.setNegativeButton("取消", new DialogInterface.OnClickListener() {
+              
+                     public void onClick(DialogInterface dialog, int which) {
+                         dialog.cancel();
+                     }
+                 }).create();
+         exitAlert.show();
+     }
+
+     
+     public static final int ITEM0=Menu.FIRST;//系统值
+     public static final int ITEM1=Menu.FIRST+1;
+
 }

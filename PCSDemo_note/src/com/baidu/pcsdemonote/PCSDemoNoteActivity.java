@@ -13,6 +13,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
+import com.baidu.pcsdemonote.Exit;
 
 /*
  * Author: ganxun(ganxun@baidu.com)
@@ -20,14 +21,15 @@ import android.widget.Toast;
  * 
  */
 
-
 public class PCSDemoNoteActivity extends Activity {
+
 
 	/** Called when the activity is first created. */
 	
 	private Button login = null;
 	
-    private BaiduOAuth mbOauth = null;
+	
+    private BaiduOAuth mbOauth = null;   
     
     // the api key
     /*
@@ -35,8 +37,7 @@ public class PCSDemoNoteActivity extends Activity {
      */
     private final static String mbApiKey = "L6g70tBRRIXLsY0Z3HwKqlRE"; //your app_key";
 	
-    
-	
+    	
     @Override
     public void onCreate(Bundle savedInstanceState) {
     	    	
@@ -53,6 +54,25 @@ public class PCSDemoNoteActivity extends Activity {
             }
         });
     }
+    
+    
+	@Override
+	protected void onStart() {
+		// TODO Auto-generated method stub
+		super.onStart();
+				
+		if(Exit.flag == 1)
+		{
+			
+			this.finish();
+			//kill process
+			android.os.Process.killProcess(android.os.Process.myPid()); 
+						
+		}else{
+			super.onResume();
+		}
+	}
+    
     
     //
     // login
