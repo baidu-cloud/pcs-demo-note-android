@@ -24,6 +24,6 @@
     <string name="edit_name">编辑文件</string>
     <string name="content_name">文件显示</string>
     <string name="logintitle">与百度连接</string>
-    <string name="contenttitle">记事本</string>
+    <string name="contenttitle">云端记事本</string>
 
 </resources>

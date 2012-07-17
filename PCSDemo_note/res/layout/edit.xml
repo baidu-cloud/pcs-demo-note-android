@@ -8,7 +8,7 @@
         android:id="@+id/edit" 
         android:layout_width="match_parent"
         android:layout_height="48dp"
-        android:background="#333000"
+        android:background="#352e24"
         >
 
      <TextView 
@@ -24,7 +24,7 @@
     
 	<RelativeLayout 
 	    android:layout_width="fill_parent"
-	    android:layout_height="match_parent"
+	    android:layout_height="fill_parent"
 	    android:background="#FFFFCC"
 	    android:layout_marginBottom="64dp"
 	    android:layout_below="@+id/edit"
@@ -33,13 +33,15 @@
 	 <EditText
             android:id="@+id/edit_content"
             android:layout_width="fill_parent"
-            android:layout_height="match_parent"
+            android:layout_height="fill_parent"
             android:layout_below="@+id/edit_title"
             android:layout_alignLeft="@+id/edittext"
             android:singleLine="false"
+            android:textSize="9pt"
             android:scrollbars="vertical"
 			android:background="#faf3c5" 
             android:gravity="top"
+            
             />
 	    	    
 	</RelativeLayout>
@@ -48,14 +50,14 @@
 	    android:layout_width="fill_parent"
 	    android:layout_height="wrap_content"
 	    android:layout_alignParentBottom="true"
-	    android:background="#333000"	    
+	    android:background="#352e24"	    
 	    >
        <ImageButton
             android:layout_width="64dp"
             android:layout_height="64dp"
             android:id="@+id/btneditback"
-			android:src="@drawable/yi_ic_back_baidu_dark"
-			android:background="#333000"
+			android:src="@drawable/back_btn"
+			android:background="#352e24"
 			android:layout_alignParentLeft="true"
 			
        /> 
@@ -65,8 +67,8 @@
             android:layout_height="64dp"
             android:id="@+id/btneditsave"
             android:text="@string/save"
-			android:src="@drawable/yi_ic_cab_done_baidu_dark"
-			android:background="#333000" 
+			android:src="@drawable/save_btn"
+			android:background="#352e24" 
 			android:layout_alignParentRight="true"
 			android:layout_alignTop="@+id/btneditback"       
        />

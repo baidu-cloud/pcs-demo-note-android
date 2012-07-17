@@ -221,6 +221,7 @@ public class ContentActivity extends ListActivity {
     	alert.setTitle(R.string.title);
     	
     	final EditText input = new EditText(ContentActivity.this);
+    	
     	alert.setView(input);
     	
     	alert.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
@@ -351,7 +352,7 @@ public class ContentActivity extends ListActivity {
   public void  isExit(){
     	
         AlertDialog.Builder exitAlert = new AlertDialog.Builder(this);
-        exitAlert.setTitle("提示...").setMessage("你确定要离开客户端吗？");
+        exitAlert.setIcon(R.drawable.alert_dark).setTitle("提示...").setMessage("你确定要离开客户端吗？");
         exitAlert.setPositiveButton("确定", new DialogInterface.OnClickListener() {
                
                     public void onClick(DialogInterface dialog, int which) {

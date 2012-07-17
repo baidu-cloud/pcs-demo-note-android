@@ -9,7 +9,7 @@
         android:layout_width="fill_parent"
         android:layout_height="48dp"
         android:layout_alignParentTop="true"
-        android:background="#333000"
+        android:background="#352e24"
         >
 
      <TextView 
@@ -47,14 +47,14 @@
 	    android:layout_width="fill_parent"
 	    android:layout_height="wrap_content"
 	    android:layout_alignParentBottom="true"
-	    android:background="#333000"	    
+	    android:background="#352e24"	    
 	    >
        <ImageButton
             android:layout_width="64dp"
             android:layout_height="64dp"
             android:id="@+id/btnback"
-			android:src="@drawable/yi_ic_back_baidu_dark"
-			android:background="#333000"
+			android:src="@drawable/back_btn"
+			android:background="#352e24"
 			android:layout_alignParentLeft="true"
 			
        /> 
@@ -64,8 +64,8 @@
             android:layout_height="64dp"
             android:id="@+id/btnsave"
             android:text="@string/save"
-			android:src="@drawable/yi_ic_cab_done_baidu_dark"
-			android:background="#333000" 
+			android:src="@drawable/save_btn"
+			android:background="#352e24" 
 			android:layout_alignParentRight="true"
 			android:layout_alignTop="@+id/btnback"       
        />

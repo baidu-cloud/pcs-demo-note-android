@@ -10,22 +10,23 @@
         android:layout_width="fill_parent"
         android:layout_height="48dp"
         android:layout_alignParentTop="true"
-        android:background="#333000"
+        android:background="#352e24"
         >
      <ImageView 
          android:id="@+id/contenticon"
          android:layout_width="32dp"
          android:layout_height="32dp"
          android:layout_alignParentLeft="true"
-         android:src="@drawable/icon"
+         android:src="@drawable/title_icon"
          android:layout_centerVertical="true"
+         android:layout_marginLeft="10dp"
          />
      <TextView 
          android:id="@+id/contenttitle"
          android:layout_width="fill_parent"
          android:layout_height="wrap_content"
          android:text="@string/contenttitle"
-         android:textSize="7pt"
+         android:textSize="8pt"
          android:layout_toRightOf="@+id/contenticon"
          android:layout_centerVertical="true"
          />
@@ -36,7 +37,7 @@
         android:orientation="vertical"
         android:layout_width="fill_parent"
         android:layout_height="match_parent"
-        android:background="#FFFFCC"
+        android:background="#faf3c5"
         android:layout_marginBottom="64dp"
         android:layout_below="@+id/content"
         >
@@ -57,7 +58,7 @@
         android:layout_height="wrap_content" 
         android:orientation="horizontal"
         android:layout_alignParentBottom="true"
-        android:background="#333000"   
+        android:background="#352e24"   
         >
         
        <ImageButton
@@ -65,10 +66,10 @@
             android:layout_height="64dp"
             android:id="@+id/btncreate"
             android:layout_marginRight="30dp"            
-            android:src="@drawable/ic_dialer_fork_add_call"
+            android:src="@drawable/add_btn"
             android:contentDescription="@string/create"
             android:layout_alignParentLeft="true"
-            android:background="#333000" 
+            android:background="#352e24" 
        />
         
         <ImageButton
@@ -77,10 +78,10 @@
             android:id="@+id/btnrefresh"
             android:contentDescription="@string/contentrefresh"
             android:layout_marginLeft="20dp"
-           	android:src="@drawable/ic_settings_sync"
+           	android:src="@drawable/sync_btn"
            	android:layout_alignParentRight="true"
            	android:layout_alignTop="@+id/btncreate"
-           	android:background="#333000" 
+           	android:background="#352e24" 
        />
         
     </RelativeLayout>

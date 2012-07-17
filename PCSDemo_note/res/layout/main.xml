@@ -9,22 +9,23 @@
         android:layout_width="fill_parent"
         android:layout_height="48dp"
         android:layout_alignParentTop="true"
-        android:background="#333000"
+        android:background="#352e24"
         >
      <ImageView 
          android:id="@+id/loginicon"
          android:layout_width="32dp"
          android:layout_height="32dp"
          android:layout_alignParentLeft="true"
-         android:src="@drawable/icon"
+         android:src="@drawable/title_icon"
          android:layout_centerVertical="true"
+         android:layout_marginLeft="10dp"
          />
      <TextView 
          android:id="@+id/logintitle"
          android:layout_width="fill_parent"
          android:layout_height="wrap_content"
          android:text="@string/logintitle"
-         android:textSize="7pt"
+         android:textSize="8pt"
          android:layout_toRightOf="@+id/loginicon"
          android:layout_centerVertical="true"
          />
@@ -42,9 +43,7 @@
          android:id="@+id/logoicon"
          android:layout_width="wrap_content"
          android:layout_height="wrap_content"
-         android:layout_marginLeft="10dp"
-         android:layout_marginTop="60dp"
-         android:src="@drawable/baidu_logo"
+         android:src="@drawable/login_icon"
          android:layout_centerHorizontal="true"
          />
     
@@ -57,7 +56,8 @@
 	    android:text="@string/login"
 	    android:layout_alignParentBottom="true"
 	    android:layout_centerHorizontal="true"
-	    android:background="@drawable/yi_btn_default_normal_baidu"
+	    android:focusable="true"
+	    android:background="@drawable/login_btn"
 	    android:layout_marginBottom="90dp"
 	    />
 	
