@@ -25,5 +25,8 @@
     <string name="content_name">文件显示</string>
     <string name="logintitle">与百度连接</string>
     <string name="contenttitle">云端记事本</string>
+    <string name="op_title">请选择操作：</string>
+    <string name="edit">编辑</string>
+    <string name="delete">删除</string>
 
 </resources>

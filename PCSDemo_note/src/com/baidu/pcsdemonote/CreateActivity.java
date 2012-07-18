@@ -43,54 +43,38 @@ import android.widget.Toast;
 public class CreateActivity extends Activity {
     /** Called when the activity is first created. */
 	
-	private TextView  title = null;
-	
-	private EditText content = null;
-	
-	private Handler uiThreadHandler = null;
-	
-	private String access_token = null ;
-	
-	private String fileTitle = null;
-	
+	private TextView  title = null;	
+	private EditText content = null;	
 	private ImageButton editBack = null;
 	private ImageButton save = null;
 	
-	private String output_content = null;
 	
-	private String sourceFile = null;
-	
-	private int save_Flag = 0;
-	
-	private final static String mbRootPath = "/apps/云端记事本/";
-	
-	
+	BaiduPCSAction createNote = new BaiduPCSAction(); 
 	
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.create);
         
-        Intent intent = getIntent();
-        
-        access_token = intent.getStringExtra("access_token");
-        fileTitle = intent.getStringExtra("fileTitle");
-        
+        //当前处于创建文件界面
+        PCSDemoInfo.statu = 0;
+                
         title = (TextView)findViewById(R.id.titleedit);
         content = (EditText)findViewById(R.id.contentedit);
         
         editBack = (ImageButton)findViewById(R.id.btnback);
         save = (ImageButton)findViewById(R.id.btnsave);
               
-        uiThreadHandler = new Handler(); 
+        PCSDemoInfo.uiThreadHandler = new Handler(); 
         
-        title.setText(fileTitle);
-        
+        //设置标题
+        title.setText(PCSDemoInfo.fileTitle);
         
         editBack.setOnClickListener(new Button.OnClickListener(){
         	
-        	public void onClick(View v){        		
-                 back();                 
+        	public void onClick(View v){ 
+        		
+                 createNote.back(CreateActivity.this);                 
         	}
         });
         
@@ -98,163 +82,42 @@ public class CreateActivity extends Activity {
         	
         	public void onClick(View v){
         		
-        		save();       		
-        		save_Flag = 1;
+        		PCSDemoInfo.fileContent = content.getText().toString();
+        		
+        		createNote.save(CreateActivity.this); 
         	}
         });
         
     }
     
-    private void save() {
-    	  	    		
-        try{
-        			
-        	 sourceFile = this.getFilesDir()+"/"+fileTitle+".txt";
-        		
-        	 String saveFile = fileTitle+".txt";
-        			        			 	 
-        	 FileOutputStream outputStream= this.openFileOutput(saveFile, Context.MODE_PRIVATE);
-        		 
-        	 output_content=content.getText().toString();
-        	          	 
-        	 outputStream.write(output_content.getBytes());
-        	       	 
-        	 outputStream.close();
-  					
-        	 upload();
-      	                	                 		       	 		    
-        	}catch (Exception e) {   
-                //显示“文件保存失败”  
-                Toast.makeText(getApplicationContext(), R.string.error, Toast.LENGTH_SHORT).show();  
-            }    		 
-    }
     
-    private void upload(){
-    	
-    	if(null != access_token){
-
-    		Thread workThread = new Thread(new Runnable(){
-				public void run() {
-									
-		    		BaiduPCSAPI api = new BaiduPCSAPI();
-		    		api.setAccessToken(access_token);
-		    	
-					final PCSActionInfo.PCSFileInfoResponse response = api.uploadFile(sourceFile, mbRootPath+fileTitle+".txt", new BaiduPCSStatusListener(){
-
-						@Override
-						public void onProgress(long bytes, long total) {
-							// TODO Auto-generated method stub
-												
-							final long bs = bytes;
-							final long tl = total;
-
-							uiThreadHandler.post(new Runnable(){
-				    			public void run(){
-				    				
-				    				Toast.makeText(getApplicationContext(),tl+"/"+bs, Toast.LENGTH_SHORT).show(); 
-				    				
-				    				if(bs == tl){
-				    					
-				    				}
-				    			}
-				    		});						
-						}
-		    		});
-		    		
-		    		uiThreadHandler.post(new Runnable(){
-		    			public void run(){
-		    				if(response.error_code == 0){
-		    					
-		    					Toast.makeText(getApplicationContext(),"上传成功", Toast.LENGTH_SHORT).show();
-		    					
-		    					File file = new File(sourceFile);
-		    					
-		    					file.delete();
-		    					
-		    					back();
-		    					
-		    				}else{
-		    					
-		    					Toast.makeText(getApplicationContext(),"错误代码："+response.error_code, Toast.LENGTH_SHORT).show(); 
-		    				}
-		    				
-		    			}
-		    		});	
-		    		
-				}
-			});
-			 
-    		workThread.start();
-    	}
-    }
-    
-    
-    // back to show content list
-    
-    private void back(){
-        	  		
-        Intent content_intent = new Intent();
-        		
-        content_intent.putExtra("access_token", access_token);
-        		
-        content_intent.setClass(getApplicationContext(), ContentActivity.class);
-        		
-        CreateActivity.this.startActivity(content_intent);   		  	         	
-    }
-    
+    //创建菜单
     @Override
- 	public boolean onCreateOptionsMenu(Menu menu) {
- 		// TODO Auto-generated method stub
- 		super.onCreateOptionsMenu(menu);
- 	    menu.add(0, ITEM0, 0,"退出");
- 	    menu.add(0, ITEM1, 0, "关于我们");
- 	    
- 	    return true;
- 	}  
-     
- 	@Override
- 	public boolean onOptionsItemSelected(MenuItem item) {
- 		// TODO Auto-generated method stub
- 		super.onOptionsItemSelected(item);
- 		
- 		 switch (item.getItemId()) {
- 		     case ITEM0:
- 		    	 isExit();
- 		         break;
- 		     case ITEM1:
-                  
- 		         break;
- 		 }
- 		 
- 		return true;
- 	}
- 	
-   public void  isExit(){
-     	
-         AlertDialog.Builder exitAlert = new AlertDialog.Builder(this);
-         exitAlert.setTitle("提示...").setMessage("你确定要离开客户端吗？");
-         exitAlert.setPositiveButton("确定", new DialogInterface.OnClickListener() {
-                
-                     public void onClick(DialogInterface dialog, int which) {
-                     	Exit.flag = 1;
-                         Intent intent = new Intent(); 
-                         intent.putExtra("flag", "exit");//添加参数，这是退出的依据
-                         intent.setClass(getApplicationContext(), PCSDemoNoteActivity.class);//跳转到login界面，根据参数退出
-                         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);  //注意本行的FLAG设置,clear所有Activity记录
-                         startActivity(intent);//注意啊，在跳转的页面中进行检测和退出
-                     }
-                 });
-         exitAlert.setNegativeButton("取消", new DialogInterface.OnClickListener() {
-              
-                     public void onClick(DialogInterface dialog, int which) {
-                         dialog.cancel();
-                     }
-                 }).create();
-         exitAlert.show();
-     }
-
-     
-     public static final int ITEM0=Menu.FIRST;//系统值
-     public static final int ITEM1=Menu.FIRST+1;
+	public boolean onCreateOptionsMenu(Menu menu) {
+		// TODO Auto-generated method stub
+		super.onCreateOptionsMenu(menu);
+	    menu.add(0, PCSDemoInfo.ITEM0, 0,"退出");
+	    menu.add(0, PCSDemoInfo.ITEM1, 0, "关于我们");
+	    
+	    return true;
+	}  
+    
+    //菜单选择处理
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		// TODO Auto-generated method stub
+		super.onOptionsItemSelected(item);
+		
+		 switch (item.getItemId()) {
+		     case PCSDemoInfo.ITEM0:
+		    	 createNote.isExit(CreateActivity.this);
+		         break;
+		     case PCSDemoInfo.ITEM1:		    	 
+		    	 Toast.makeText(getApplicationContext(), "我是自由开发者，呵呵！", Toast.LENGTH_SHORT).show();
+		         break;
+		 }
+		 
+		return true;
+	}
 
 }

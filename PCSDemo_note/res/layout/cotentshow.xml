@@ -38,7 +38,7 @@
         android:layout_width="fill_parent"
         android:layout_height="match_parent"
         android:background="#faf3c5"
-        android:layout_marginBottom="64dp"
+        android:layout_marginBottom="48dp"
         android:layout_below="@+id/content"
         >
     
@@ -62,8 +62,8 @@
         >
         
        <ImageButton
-            android:layout_width="64dp"
-            android:layout_height="64dp"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
             android:id="@+id/btncreate"
             android:layout_marginRight="30dp"            
             android:src="@drawable/add_btn"
@@ -73,8 +73,8 @@
        />
         
         <ImageButton
-            android:layout_width="64dp"
-            android:layout_height="64dp"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
             android:id="@+id/btnrefresh"
             android:contentDescription="@string/contentrefresh"
             android:layout_marginLeft="20dp"

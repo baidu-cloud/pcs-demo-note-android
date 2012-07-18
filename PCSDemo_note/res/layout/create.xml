@@ -26,7 +26,7 @@
 	    android:layout_width="fill_parent"
 	    android:layout_height="match_parent"
 	    android:background="#FFFFCC"
-	    android:layout_marginBottom="64dp"
+	    android:layout_marginBottom="48dp"
 	    android:layout_below="@+id/creat"
 	    >
 	    
@@ -50,8 +50,8 @@
 	    android:background="#352e24"	    
 	    >
        <ImageButton
-            android:layout_width="64dp"
-            android:layout_height="64dp"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
             android:id="@+id/btnback"
 			android:src="@drawable/back_btn"
 			android:background="#352e24"
@@ -60,8 +60,8 @@
        /> 
             
         <ImageButton
-            android:layout_width="64dp"
-            android:layout_height="64dp"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
             android:id="@+id/btnsave"
             android:text="@string/save"
 			android:src="@drawable/save_btn"

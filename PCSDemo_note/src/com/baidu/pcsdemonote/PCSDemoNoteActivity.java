@@ -1,19 +1,10 @@
 package com.baidu.pcsdemonote;
 
-import com.baidu.oauth2.BaiduOAuth;
-
-import com.baidu.oauth2.BaiduOAuthViaDialog;
-
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
-import com.baidu.pcsdemonote.Exit;
+import com.baidu.pcsdemonote.BaiduPCSAction;
 
 /*
  * Author: ganxun(ganxun@baidu.com)
@@ -22,22 +13,16 @@ import com.baidu.pcsdemonote.Exit;
  */
 
 public class PCSDemoNoteActivity extends Activity {
-
-
-	/** Called when the activity is first created. */
 	
 	private Button login = null;
-	
-	
-    private BaiduOAuth mbOauth = null;   
     
-    // the api key
     /*
+     * mbApikey为开发者中心为应用分配的app_key,使用自己应用的app_key代替
      * mbApiKey should be your app_key, please instead of "your app_key"
      */
-//    private final static String mbApiKey = "L6g70tBRRIXLsY0Z3HwKqlRE"; //your app_key";
 	
-      private final static String mbApiKey = "A364CFOoZtNnrsRlusRbHK5r"; //your app_key";
+    BaiduPCSAction loginNote = new BaiduPCSAction();
+    
     @Override
     public void onCreate(Bundle savedInstanceState) {
     	    	
@@ -50,18 +35,24 @@ public class PCSDemoNoteActivity extends Activity {
         	
             public void onClick(View v) {
             	
-            	login();
+            	loginNote.login(PCSDemoNoteActivity.this);
+    
             }
         });
     }
     
+    
+    /*
+     * 在启动界面判断是否需要退出程序
+     * @see android.app.Activity#onStart()
+     */
     
 	@Override
 	protected void onStart() {
 		// TODO Auto-generated method stub
 		super.onStart();
 				
-		if(Exit.flag == 1)
+		if(PCSDemoInfo.flag == 1)
 		{
 			
 			this.finish();
@@ -72,48 +63,6 @@ public class PCSDemoNoteActivity extends Activity {
 			super.onResume();
 		}
 	}
-    
-    
-    //
-    // login
-    //
-    private void login(){
-    	mbOauth = new BaiduOAuthViaDialog(mbApiKey);
-
-    	try {
-    		mbOauth.startDialogAuth(this, new String[]{"basic", "netdisk"}, new BaiduOAuthViaDialog.DialogListener(){
-
-    			public void onComplete(Bundle values) {   				
-    				Log.i("YYY", values.getString("access_token"));
-    				
-    				Intent intent = new Intent();
-    				
-    				intent.putExtra("access_token", values.getString("access_token"));
-    				
-    				intent.setClass(getApplicationContext(), ContentActivity.class);
-    				
-    				PCSDemoNoteActivity.this.startActivity(intent);    				
-    			}
-
-    			// TODO: the error code need be redefined
-    			@SuppressWarnings("unused")
-				public void onError(int error) {   				
-    				Toast.makeText(getApplicationContext(), R.string.fail, Toast.LENGTH_SHORT).show();
-    			}
-
-    			public void onCancel() {   				
-    				Toast.makeText(getApplicationContext(), R.string.back, Toast.LENGTH_SHORT).show();
-    			}
-
-    			public void onException(String arg0) {
-    				Toast.makeText(getApplicationContext(), arg0, Toast.LENGTH_SHORT).show();
-    			}
-    		});
-    	} catch (Exception e) {
-    		// TODO Auto-generated catch block
-    		e.printStackTrace();
-    	}
-    }
     
 }
 

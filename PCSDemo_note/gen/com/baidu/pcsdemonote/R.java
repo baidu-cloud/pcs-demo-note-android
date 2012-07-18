@@ -20,20 +20,22 @@ public final class R {
         public static final int back=0x7f020006;
         public static final int back_btn=0x7f020007;
         public static final int back_btn_pressed=0x7f020008;
-        public static final int edit=0x7f020009;
-        public static final int ic_launcher=0x7f02000a;
-        public static final int login=0x7f02000b;
-        public static final int login_btn=0x7f02000c;
-        public static final int login_btn_pressed=0x7f02000d;
-        public static final int login_icon=0x7f02000e;
-        public static final int save=0x7f02000f;
-        public static final int save_btn=0x7f020010;
-        public static final int save_btn_pressed=0x7f020011;
-        public static final int sync=0x7f020012;
-        public static final int sync2=0x7f020013;
-        public static final int sync_btn=0x7f020014;
-        public static final int sync_btn_pressed=0x7f020015;
-        public static final int title_icon=0x7f020016;
+        public static final int bottom_transparent=0x7f020009;
+        public static final int dialog_full=0x7f02000a;
+        public static final int edit=0x7f02000b;
+        public static final int ic_launcher=0x7f02000c;
+        public static final int list_divider=0x7f02000d;
+        public static final int login=0x7f02000e;
+        public static final int login_btn=0x7f02000f;
+        public static final int login_btn_pressed=0x7f020010;
+        public static final int login_icon=0x7f020011;
+        public static final int save=0x7f020012;
+        public static final int save_btn=0x7f020013;
+        public static final int save_btn_pressed=0x7f020014;
+        public static final int sync=0x7f020015;
+        public static final int sync_btn=0x7f020016;
+        public static final int sync_btn_pressed=0x7f020017;
+        public static final int title_icon=0x7f020018;
     }
     public static final class id {
         public static final int btnback=0x7f05000b;
@@ -77,6 +79,8 @@ public final class R {
         public static final int contenttitle=0x7f040017;
         public static final int create=0x7f040008;
         public static final int create_name=0x7f040013;
+        public static final int delete=0x7f04001a;
+        public static final int edit=0x7f040019;
         public static final int edit_name=0x7f040014;
         public static final int editback=0x7f04000d;
         public static final int empty=0x7f040006;
@@ -87,6 +91,7 @@ public final class R {
         public static final int login=0x7f040002;
         public static final int logintitle=0x7f040016;
         public static final int ok=0x7f04000a;
+        public static final int op_title=0x7f040018;
         public static final int refresh=0x7f04000e;
         public static final int save=0x7f04000c;
         public static final int savesuccess=0x7f040011;
