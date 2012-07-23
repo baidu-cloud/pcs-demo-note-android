@@ -32,40 +32,50 @@ public class BaiduPCSAction {
     // 与百度连接，获得access_token
     public void login(final Context context){
     	
-    	PCSDemoInfo.mbOauth = new BaiduOAuthViaDialog(PCSDemoInfo.app_key);
+    	if(null != PCSDemoInfo.access_token){
+			Intent intent = new Intent();    				    						    				
+			intent.setClass(context, ContentActivity.class); 				
+			context.startActivity(intent); 
+    	}else{
+    		
+    		PCSDemoInfo.mbOauth = new BaiduOAuthViaDialog(PCSDemoInfo.app_key);
 
-    	try {
-    		//启动百度OAuth对话框
-    		PCSDemoInfo.mbOauth.startDialogAuth(context, new String[]{"basic", "netdisk"}, new BaiduOAuthViaDialog.DialogListener(){
+        	try {
+        		//启动百度OAuth对话框
+        		PCSDemoInfo.mbOauth.startDialogAuth(context, new String[]{"basic", "netdisk"}, new BaiduOAuthViaDialog.DialogListener(){
 
-    			//登陆成功后的操作
-    			public void onComplete(Bundle values) {
-    				//获得access_token
-    				PCSDemoInfo.access_token = values.getString("access_token");
-    				
-    				Intent intent = new Intent();    				    						    				
-    				intent.setClass(context, ContentActivity.class); 				
-    				context.startActivity(intent);    				
-    			}
+        			//登陆成功后的操作
+        			public void onComplete(Bundle values) {
+        				//获得access_token
+        				PCSDemoInfo.access_token = values.getString("access_token");
+        				
+        				Intent intent = new Intent();    				    						    				
+        				intent.setClass(context, ContentActivity.class); 				
+        				context.startActivity(intent);    				
+        			}
 
-    			// TODO: the error code need be redefined
-    			@SuppressWarnings("unused")
-				public void onError(int error) {   				
-    				Toast.makeText(context, R.string.fail, Toast.LENGTH_SHORT).show();
-    			}
+        			// TODO: the error code need be redefined
+        			@SuppressWarnings("unused")
+    				public void onError(int error) {   				
+        				Toast.makeText(context, R.string.fail, Toast.LENGTH_SHORT).show();
+        			}
 
-    			public void onCancel() {   				
-    				Toast.makeText(context, R.string.back, Toast.LENGTH_SHORT).show();
-    			}
+        			public void onCancel() {   				
+        				Toast.makeText(context, R.string.back, Toast.LENGTH_SHORT).show();
+        			}
 
-    			public void onException(String arg0) {
-    				Toast.makeText(context, arg0, Toast.LENGTH_SHORT).show();
-    			}
-    		});
-    	} catch (Exception e) {
-    		// TODO Auto-generated catch block
-    		e.printStackTrace();
+        			public void onException(String arg0) {
+        				Toast.makeText(context, arg0, Toast.LENGTH_SHORT).show();
+        			}
+        		});
+        	} catch (Exception e) {
+        		// TODO Auto-generated catch block
+        		e.printStackTrace();
+        	}
+    		
     	}
+    	
+    	
     }
     
     //上传文件到云端
