@@ -92,7 +92,7 @@ public class EditActivity extends Activity {
         });       
     }
      
-    // back to show content list
+    // Back to the show content activity
     
     @Override
 	public boolean onCreateOptionsMenu(Menu menu) {

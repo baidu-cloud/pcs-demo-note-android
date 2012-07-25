@@ -2,33 +2,38 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" 
     		  android:orientation="horizontal"
               android:layout_width="fill_parent"    
-              android:layout_height="50dp">  
-   <TextView android:id="@+id/tag"    
-              android:layout_width="10dp"    
-              android:layout_height="fill_parent"
-              android:textColor="#000000"    
-              android:singleLine="true"    
-              android:textSize="10pt"  
-              android:background="#ff8e2b"
-              android:layout_gravity="bottom"             
-               />            
-    <TextView android:id="@+id/file_name"    
-              android:layout_width="180dp"    
-              android:layout_height="wrap_content"
-              android:textColor="#000000"    
-              android:singleLine="true"    
-              android:textSize="10pt"  
-              android:background="#faf3c5"
-              android:layout_gravity="center_vertical"                    
-               />
-    <TextView android:id="@+id/time"    
-              android:layout_width="fill_parent"    
-              android:layout_height="wrap_content"
-              android:textColor="#000000"    
-              android:singleLine="true"    
-              android:textSize="10pt"  
-              android:background="#faf3c5"
-			  android:layout_gravity="center_vertical" 
-               />
-                    
+              android:layout_height="40dp"> 
+   <RelativeLayout
+       android:layout_height="fill_parent"
+       android:layout_width="fill_parent">
+		        
+		   <TextView android:id="@+id/tag"    
+		              android:layout_width="10dp"    
+		              android:layout_height="fill_parent"
+		              android:textColor="#000000"    
+		              android:singleLine="true"    
+		              android:textSize="10pt"  
+		              android:background="#ff8e2b"
+		              android:layout_alignParentLeft="true"          
+		               />            
+		    <TextView android:id="@+id/file_name"    
+		              android:layout_width="wrap_content"    
+		              android:layout_height="fill_parent"
+		              android:textColor="#000000"    
+		              android:singleLine="true"    
+		              android:textSize="10pt"  
+		              android:background="#faf3c5"
+		              android:layout_toRightOf="@+id/tag"                  
+		               />
+		    <TextView android:id="@+id/time"    
+		              android:layout_width="wrap_content"    
+		              android:layout_height="fill_parent"
+		              android:textColor="#000000"    
+		              android:singleLine="true"    
+		              android:textSize="10pt"  
+		              android:background="#faf3c5"
+					  android:layout_alignParentRight="true"
+		               />
+    
+     </RelativeLayout>               
 </LinearLayout >  
