@@ -1,5 +1,5 @@
-baidu-cloud-samples
+pcs-demo-note-android
 ===================
 
-This repository contains baidu cloud sample code for developers. 
+This is a demo application to show PCS capabilities in Android platform.
 
