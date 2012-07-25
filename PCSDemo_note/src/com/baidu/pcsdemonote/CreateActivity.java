@@ -56,7 +56,7 @@ public class CreateActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.create);
         
-        //当前处于创建文件界面
+        //Set status
         PCSDemoInfo.statu = 0;
                 
         title = (TextView)findViewById(R.id.titleedit);
@@ -67,7 +67,7 @@ public class CreateActivity extends Activity {
               
         PCSDemoInfo.uiThreadHandler = new Handler(); 
         
-        //设置标题
+        //Set tilte
         title.setText(PCSDemoInfo.fileTitle);
         
         editBack.setOnClickListener(new Button.OnClickListener(){
@@ -91,7 +91,7 @@ public class CreateActivity extends Activity {
     }
     
     
-    //创建菜单
+    //Create menu
     @Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// TODO Auto-generated method stub
@@ -102,7 +102,7 @@ public class CreateActivity extends Activity {
 	    return true;
 	}  
     
-    //菜单选择处理
+    
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		// TODO Auto-generated method stub

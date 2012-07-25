@@ -17,7 +17,6 @@ public class PCSDemoNoteActivity extends Activity {
 	private Button login = null;
     
     /*
-     * mbApikey为开发者中心为应用分配的app_key,使用自己应用的app_key代替
      * mbApiKey should be your app_key, please instead of "your app_key"
      */
 	
@@ -43,7 +42,6 @@ public class PCSDemoNoteActivity extends Activity {
     
     
     /*
-     * 在启动界面判断是否需要退出程序
      * @see android.app.Activity#onStart()
      */
     

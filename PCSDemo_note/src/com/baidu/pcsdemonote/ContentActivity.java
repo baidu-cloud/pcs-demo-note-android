@@ -63,7 +63,7 @@ public class ContentActivity extends ListActivity {
         
         PCSDemoInfo.statu = 2;
         
-        //列出云端上文件的信息
+        //Content list
         contentNote.list(ContentActivity.this);
                 
         create.setOnClickListener(new Button.OnClickListener(){
@@ -82,18 +82,18 @@ public class ContentActivity extends ListActivity {
         
     }
     
-    //设置listview上item被点击的响应函数
+    //Set item response function
     @Override
     protected void onListItemClick(ListView l, View v, int position, long id){
     	
     	super.onListItemClick(l, v, position, id);
     	
-    	//获得该item上的文件名
+    	//Get filename form item
     	 PCSDemoInfo.fileTitle = l.getAdapter().getItem(position).toString();
     	
     	 PCSDemoInfo.fileTitle = PCSDemoInfo.fileTitle.substring(PCSDemoInfo.fileTitle.indexOf("=")+1, PCSDemoInfo.fileTitle.lastIndexOf(","));
     	 
-		//操作选择的对话框（包括“编辑”，“删除”，“取消”）
+		//Select operation(edit/delete/cancel)
     	AlertDialog.Builder onListItemClickAlert = new AlertDialog.Builder(ContentActivity.this);
     	onListItemClickAlert.setTitle("操作选择：");
     		
@@ -129,11 +129,11 @@ public class ContentActivity extends ListActivity {
     	 
     }
         
- //创建新的记事本
+     //Create note
     
     private void create(){
     	
-    	//文件名输入对话框，判断用户取得用户名是否已存在
+    	//Judge whether filename is empty
     	AlertDialog.Builder alert = new AlertDialog.Builder(ContentActivity.this);
     	alert.setTitle(R.string.title);
     	
@@ -148,11 +148,11 @@ public class ContentActivity extends ListActivity {
 				PCSDemoInfo.fileTitle = input.getText().toString();
 				
 				PCSDemoInfo.fileFlag = 0;
-				//判断文件名是否为空				
+				//Judge whether filename is empty			
                 if(PCSDemoInfo.fileTitle.equals("")){                	
                 	PCSDemoInfo.fileFlag = 1;                	
                 }
-            	//判断文件名是否已存在			
+            	//Judge whether filename is exist		
 				for(Iterator<String> file = PCSDemoInfo.fileNameList.iterator();file.hasNext();){					
 					if (file.next().equals(PCSDemoInfo.fileTitle)){						
 						PCSDemoInfo.fileFlag = 2;
@@ -168,7 +168,7 @@ public class ContentActivity extends ListActivity {
 						Toast.makeText(getApplicationContext(), "文件名已存在！", Toast.LENGTH_SHORT).show();
 					
 					}else{						
-						//跳转到创建界面
+						//back to create activity
 						Intent create_intent = new Intent();											
 						create_intent.setClass(getApplicationContext(), CreateActivity.class);						
 						ContentActivity.this.startActivity(create_intent);					
@@ -187,7 +187,7 @@ public class ContentActivity extends ListActivity {
     	alert.show();      	
     }
     
-    //刷新显示内容
+    //Refresh  content list
     private void refresh(){    	
     	contentNote.list(ContentActivity.this);
     } 
